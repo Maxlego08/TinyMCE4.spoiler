@@ -68,6 +68,7 @@ window.addEventListener("load", function (event) {
         let element = elements[i];
         let button = element.childNodes[1];
         let spoiler_text = element.childNodes[3];
+        spoiler_text.style.display = 'none';
         
         button.addEventListener('click', function (event) {
             if (spoiler_text.style.display === 'block') {
