@@ -58,8 +58,37 @@ to a plain paragraph.
 **Note**: For spoiler blocks to work properly you need to add to your web pages CSS/JavaScript
 code that defines look and behavior of the spoiler blocks.
 
-[An example of a spoiler on a web page using JQuery](https://jsfiddle.net/romanvm/7w9shc27/).
+````javascript
+window.addEventListener("load", function (event) {
+    let elements = document.getElementsByClassName('spoiler');
 
+    let i;
+    for (i = 0; i < elements.length; i++) {
+
+        let element = elements[i];
+        let button = element.childNodes[1];
+        let spoiler_text = element.childNodes[3];
+        
+        button.addEventListener('click', function (event) {
+            if (spoiler_text.style.display === 'block') {
+                spoiler_text.style.opacity = 0;
+                setTimeout(function () {
+                    spoiler_text.style.display = 'none';
+                }, 300);
+            } else {
+                spoiler_text.style.display = 'block';
+                let op = 0;
+                let intervalID = setInterval(function () {
+                    if (op > 1)
+                        window.clearInterval(intervalID);
+                    spoiler_text.style.opacity = op;
+                    op += 0.01;
+                }, 2);
+            }
+        });
+    }
+});
+````
 ## License
 
 [LGPL](http://www.gnu.org/licenses/lgpl-3.0.en.html).
