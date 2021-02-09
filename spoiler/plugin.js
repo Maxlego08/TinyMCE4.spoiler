@@ -63,7 +63,7 @@ tinymce.PluginManager.add('spoiler', function (editor, url) {
             if (!elem.hasAttribute('contenteditable')) {
                 let $elem = $(elem);
                 if ($elem.hasClass('spoiler')) {
-                    elem.contentEditable = false;
+                    elem.contentEditable = true;
                 } else if ($elem.hasClass('spoiler-text')) {
                     elem.contentEditable = true;
                 }
